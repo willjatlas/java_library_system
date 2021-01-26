@@ -1,19 +1,25 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Library {
 
     // Instance variables.
     private ArrayList<Book> libBookList;
+    private HashMap<String,Integer> genreHashMap;
     private int maxCapacity;
 
     // Constructor.
     public Library(){
-        libBookList = new ArrayList<>();
-        maxCapacity = 4;
+        libBookList  = new ArrayList<>();
+        genreHashMap = new HashMap<>();
+        maxCapacity  = 4;
     }
 
     // Returns length of library book array list.
     public int getBookCount(){ return libBookList.size(); }
+
+    // Returns a value when given key of the genre hashmap.
+    public int getGenreHashMapValue(String key){ return genreHashMap.get(key); }
 
     // Checks if there is room to add books.
     public boolean checkAtCapacity(){ return getBookCount() < maxCapacity; }
@@ -30,6 +36,18 @@ public class Library {
             }
         }
         return null;
+    }
+
+    // Sets the genre hash map to key: genre, value: no of books of that genre.
+    public void setGenreHashMap(){
+        for(Book book : libBookList){
+            if(genreHashMap.containsKey(book.getGenre())){
+                genreHashMap.put(book.getGenre(), genreHashMap.get(book.getGenre()) +1);
+            }
+            else{
+                genreHashMap.put(book.getGenre(), 1);
+            }
+        }
     }
 
 }

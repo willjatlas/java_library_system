@@ -15,4 +15,7 @@ public class Book {
     // Returns books title.
     public String getTitle(){ return this.title; }
 
+    // Returns books genre.
+    public String getGenre(){ return this.genre; }
+
 }
