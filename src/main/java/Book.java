@@ -12,6 +12,7 @@ public class Book {
         this.genre  = genre;
     }
 
-
+    // Returns books title.
+    public String getTitle(){ return this.title; }
 
 }

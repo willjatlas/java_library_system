@@ -15,12 +15,13 @@ public class LibraryTest {
     @Before
     public void before(){
 
-        library = new Library();
         book1   = new Book("Mort", "Terry Pratchett", "Comedy Fiction");
         book2   = new Book("Guards! Guards!", "Terry Pratchett", "Comedy Fiction");
-        book3   = new Book("Hogfather", "Terry Pratchett", "Comedy Fiction");
+        book3   = new Book("Demon Haunted World", "Carl Sagan", "Science Non-Fiction");
         book4   = new Book("Thief of Time", "Terry Pratchett", "Comedy Fiction");
-        book5   = new Book("Going Postal", "Terry Pratchett", "Comedy Fiction");
+        book5   = new Book("Chaos", "James Gleick", "Science Non-Fiction");
+        library = new Library();
+
 
         library.addBook(book1);
         library.addBook(book2);
@@ -35,10 +36,17 @@ public class LibraryTest {
     }
 
     @Test
-    public void cantAddIfOverCap(){
+    public void canNotAddIfOverCap(){
         library.addBook(book4);
         library.addBook(book5);
         assertEquals(4, library.getBookCount());
+    }
+
+    @Test
+    public void canLendBook(){
+        Book output = library.lendBook("Mort");
+        assertEquals(book1, output);
+        assertEquals(2, library.getBookCount());
     }
 
 }
