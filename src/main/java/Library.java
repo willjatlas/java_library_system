@@ -29,24 +29,22 @@ public class Library {
 
     // Lends a book to a borrower.
     public Book lendBook(String title) {
-        for (Book book : libBookList){
-            if (book.getTitle().equals(title)){
+        for (Book book : libBookList)
+            if (book.getTitle().equals(title)) {
                 int index = libBookList.indexOf(book);
                 return libBookList.remove(index);
             }
-        }
         return null;
     }
 
     // Sets the genre hash map to key: genre, value: no of books of that genre.
     public void setGenreHashMap(){
         for(Book book : libBookList){
-            if(genreHashMap.containsKey(book.getGenre())){
-                genreHashMap.put(book.getGenre(), genreHashMap.get(book.getGenre()) +1);
+            String bookKey = book.getGenre();
+            if(genreHashMap.containsKey(bookKey)){
+                genreHashMap.put(bookKey, genreHashMap.get(bookKey) +1);
             }
-            else{
-                genreHashMap.put(book.getGenre(), 1);
-            }
+            else genreHashMap.put(book.getGenre(), 1);
         }
     }
 
