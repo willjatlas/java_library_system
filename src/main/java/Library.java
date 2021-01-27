@@ -27,7 +27,7 @@ public class Library {
     // Adds a book to the book array list.
     public void addBook(Book book){ if (checkAtCapacity()) libBookList.add(book); }
 
-    // Lends a book to a borrower.
+    // Lends a book to a borrower. Returns null if there is no book.
     public Book lendBook(String title) {
         for (Book book : libBookList)
             if (book.getTitle().equals(title)) {
@@ -44,7 +44,7 @@ public class Library {
             if(genreHashMap.containsKey(bookKey)){
                 genreHashMap.put(bookKey, genreHashMap.get(bookKey) +1);
             }
-            else genreHashMap.put(book.getGenre(), 1);
+            else genreHashMap.put(bookKey, 1);
         }
     }
 
